@@ -9,7 +9,7 @@ Usage
 -----
 
 ```
-    go get github.com/felipernb/go-approximate
+$ go get github.com/felipernb/go-approximate
 ```
 
 myfile.go
