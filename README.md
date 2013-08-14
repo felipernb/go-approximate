@@ -13,8 +13,9 @@ $ go get github.com/felipernb/go-approximate
 ```
 
 myfile.go
-
 ```go
+package main
+
 import (
     "fmt"
     "github.com/felipernb/go-approximate"
