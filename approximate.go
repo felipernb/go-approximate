@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-var units = map[string]string{
+var defaultUnits = map[string]string{
 	"thousand": "K",
 	"million":  "M",
 	"billion":  "G",
@@ -27,19 +27,23 @@ func round(x float64, prec int) float64 {
 }
 
 func Approximate(number int) string {
+	return ApproximateWithUnits(number, defaultUnits["thousand"], defaultUnits["million"], defaultUnits["billion"])
+}
+
+func ApproximateWithUnits(number int, thousand, million, billion string) string {
 	divisor := 1.0
 	unit := ""
 	numberFloat := float64(number)
 	absNumber := math.Abs(numberFloat)
 	if absNumber >= 999950000 { // billions
 		divisor = 1e9
-		unit = units["billion"]
+		unit = billion
 	} else if absNumber >= 999950 { // millions
 		divisor = 1e6
-		unit = units["million"]
+		unit = million
 	} else if absNumber >= 1000 { // thousands
 		divisor = 1e3
-		unit = units["thousand"]
+		unit = thousand
 	}
 	division := numberFloat / divisor
 
